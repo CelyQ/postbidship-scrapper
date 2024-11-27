@@ -1,0 +1,18 @@
+version: '3'
+
+dotenv:
+  - .env
+
+tasks:
+  build:
+    env:
+      GOOS: linux
+      GOARCH: amd64
+    cmds:
+        - go build -o build/postbidship ./...
+    silent: false
+
+  run:
+    cmds:
+      - task: build
+      - build/postbidship
